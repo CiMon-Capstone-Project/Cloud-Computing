@@ -14,13 +14,17 @@ import Database from "../config/Database.js";
 import express from 'express';
 import path from "path"
 
+
 const router = express.Router(); // Create a router instance
 
 const uploader = multer({
   storage: multer.memoryStorage(), // Store file in memory
 });
 
-const db = new Database(); // Create a new database instance
+const db = new Database();
+db.testConnection().then(() => {
+  console.log('Database setup complete.');
+});
 
 const storageService = new StorageService({ bucketName: "cimon-bucket", db: db });
 const treatmentService = new TreatmentService({ db: db });
@@ -45,10 +49,12 @@ router.post('/detection', verifyToken, uploader.single('file'), (req, res) => {
 });
 
 // Article Routes
-router.get('/treatment/:id', verifyToken, (req, res) => {
-  treatment.getTreatmentHandler(req, res);
-});
+// Route definition
+// router.get('/treatment', treatment.getTreatmentHandler);
 
+// router.get('/treatment', (req, res) => {
+//   res.send('API treatment is working!');
+// });
 
 // Image Upload Routes
 router.post('/upload', verifyToken, uploader.single('file'), (req, res) => {
