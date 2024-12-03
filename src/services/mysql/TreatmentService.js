@@ -3,20 +3,32 @@ class TreatmentService {
     this.pool = pool;
   }
 
-  // Fungsi untuk mengambil seluruh data treatment
-  async getTreatment() {
-    const query = `SELECT * FROM treatments`;
+  async getTreatment(treatment_id) {
+    const query = `
+      SELECT 
+        id,
+        treatment_id,
+        disease,
+        symptom,
+        prevention,
+        treatment,
+        created_at
+      FROM 
+        treatments
+      WHERE 
+        treatment_id = ?;  -- Filter by specific treatment_id
+    `;
 
     try {
-      console.log('Executing Query:', query);
-
-      // Menjalankan query dan mengambil hasil
-      const [results] = await this.pool.query(query);
-
-      return results; // Mengembalikan hasil dari query
+      const [results] = await this.pool.query(query, [treatment_id]);
+      if (results.length === 0) {
+        // Return an error object or throw an error to be handled by the caller
+        throw new Error('Treatment not found for ID: ' + treatment_id);
+      }
+      return results;
     } catch (error) {
-      console.error('Error in TreatmentService:', error.message);
-      throw error; // Lempar ulang error jika terjadi kesalahan
+      // Handle or rethrow the error
+      throw error;
     }
   }
 }

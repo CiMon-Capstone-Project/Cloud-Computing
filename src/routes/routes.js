@@ -14,17 +14,13 @@ import Database from "../config/Database.js";
 import express from 'express';
 import path from "path"
 
-
 const router = express.Router(); // Create a router instance
 
 const uploader = multer({
   storage: multer.memoryStorage(), // Store file in memory
 });
 
-const db = new Database();
-db.testConnection().then(() => {
-  console.log('Database setup complete.');
-});
+const db = new Database(); // Create a new database instance
 
 const storageService = new StorageService({ bucketName: "cimon-bucket", db: db });
 const treatmentService = new TreatmentService({ db: db });
@@ -37,24 +33,21 @@ const article = new Article({ db: db, addImage: storageService.addImage, getArti
 const detection = new Detection({ db: db, addImage: storageService.addImage,  postDetection: detectionService.postDetection, getDetection: detectionService.getDetection, deleteAllDetection: detectionService.deleteAllDetection });
 const blog = new Blog({ db: db, getBlog: blogService.getBlog});
 
-
+router.get('/test', (req,res) => {
+  res.send('API Berhasil')
+})
 // History Routes
 router.get('/detection', verifyToken, detection.getDetectionByIdHandler);
 router.delete('/detection',verifyToken,  detection.deleteAllDetectionHandler);
-// router.delete('/detection',verifyToken,  (req, res) => {
-//   detection.deleteDetection(req, res);
-// });
 router.post('/detection', verifyToken, uploader.single('file'), (req, res) => {
   detection.postDetectionHandler(req, res);
 });
 
 // Article Routes
-// Route definition
-// router.get('/treatment', treatment.getTreatmentHandler);
+router.get('/treatment/:id', verifyToken, (req, res) => {
+  treatment.getTreatmentHandler(req, res);
+});
 
-// router.get('/treatment', (req, res) => {
-//   res.send('API treatment is working!');
-// });
 
 // Image Upload Routes
 router.post('/upload', verifyToken, uploader.single('file'), (req, res) => {
