@@ -4,6 +4,7 @@ dotenv.config();
 
 class Database {
   constructor() {
+    console.log('DB_HOST:', process.env.DB_HOST);
     this.pool = mysql.createPool({
       host: process.env.DB_HOST !== 'production' ? 'localhost' : '0.0.0.0',
       user: process.env.MYSQL_USER,
@@ -27,6 +28,20 @@ class Database {
       return false;
     }
   }
+
+  async testConnection() {
+    try {
+      const connection = await this.pool.getConnection();
+      const [rows] = await connection.query('SELECT DATABASE() AS dbName;');
+      console.log('✅ Connected to database:', rows[0].dbName); // Akan menampilkan nama database
+      connection.release();
+      return true;
+    } catch (err) {
+      console.error('❌ Database connection failed:', err);
+      return false;
+    }
+  }
+  
 }
 
 export default Database;
