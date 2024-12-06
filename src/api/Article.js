@@ -87,6 +87,7 @@ class Article {
   async updateArticleHandler(req, res) {
     try {
       const id = req.params.id;
+      const { email } = req.user
       const { title, description } = req.body;
       if (!req.file) {
         return res.status(400).json({
@@ -105,7 +106,7 @@ class Article {
       console.log(title);
       console.log(description);
       console.log(id);
-      const results = await this.putArticle(id, image_url, title, description);
+      const results = await this.putArticle(email, image_url, title, description);
       res.status(200).json({
         status: 'success',
         message: 'Article updated successfully',
@@ -118,25 +119,32 @@ class Article {
   }
 
   async deleteArticleHandler(req, res) {
-    const id = req.params.id;
-    console.log(id);
+    
     try {
-      const [result] = await this.deleteArticle(id);
-      if (result.affectedRows > 0) {
-        res.status(200).json({
+      const id = req.params.id;
+      console.log(id);
+        console.time('deleteArticle');
+        const [result] = await this.deleteArticle(id);
+        console.timeEnd('deleteArticle');
+
+        console.log(result);
+
+        // if (result.affectedRows > 0) {
+        //     res.status(200).json({
+        //         status: 'success',
+        //         message: 'Article deleted successfully',
+        //         data: { id },
+        //     });
+        // }
+        return res.status(200).json({ 
           status: 'success',
-          message: 'Article deleted successfully',
-          data: { id },
+          message: `History record and image deleted successfully for id: ${id}`
         });
-      } 
-      // if (result.affectedRows === 0) {
-      //   throw new Error('Article not found');
-      // }
     } catch (error) {
-      console.error('Error deleting article:', error);
-      res.status(500).json({ status: 'error', message: error.message });
+        console.error('Error deleting article:', error);
+        res.status(500).json({ status: 'error', message: error.message });
     }
-  }
+}
 }
 
 export default Article;

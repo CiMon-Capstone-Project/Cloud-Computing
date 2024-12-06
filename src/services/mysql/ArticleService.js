@@ -48,7 +48,7 @@ class ArticleService{
         WHERE 
           email = ?;
       `;
-      const [results] = await this.pool.execute(query, [title, description, image_url, email]);
+      const [results] = await this.pool.query(query, [title, description, image_url, email]);
       if (results.affectedRows === 0) {
         throw new Error('Article not found or no changes made');
       }
@@ -63,7 +63,9 @@ class ArticleService{
     try {
       const query = `DELETE FROM articles WHERE id = ?;`
       const result = await this.pool.query(query, [id]);
-      
+      if (result.affectedRows === 0) {
+        throw new Error('Article not found');
+      }
       return result
     } catch (error) {
       console.error('Error deleting article:', error);
