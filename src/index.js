@@ -12,7 +12,7 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Cimon API server!🚀");
+  res.send("Welcome to Cimon API server!🚀🚀");
 });
 app.use("/api",router)
 
@@ -25,5 +25,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on PORT ${PORT}. whoooshh 🚀🚀`);
+    console.log(`Server is running on PORT ${PORT}. whoooshh🚀`);
 });
