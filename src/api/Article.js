@@ -26,6 +26,7 @@ class Article {
 
   async getArticleHandler(req, res) {
     try {
+      const {email, displayName} = req.user
       const { page = 1, limit = 10 } = req.query;
       const offset = (page - 1) * limit;
       console.log(offset);
@@ -35,7 +36,9 @@ class Article {
       res.status(200).json({
         status: 'success',
         message: 'Articles fetched successfully',
-        data: { results },
+        data: { 
+          results 
+        },
       });
     } catch (error) {
       console.error('Error fetching articles:', error);
@@ -45,7 +48,7 @@ class Article {
 
   async postArticleHandler(req, res) {
     try {
-        const { uid } = req.user;
+        const { email, displayName } = req.user;
         const { title, description } = req.body;
         if (!req.file) {
           return res.status(400).json({
@@ -61,12 +64,13 @@ class Article {
         });
         const image_url = `https://storage.googleapis.com/${this.bucketName}/${filePath}`;
 
-        const results = await this.postArticle(uid, image_url, title, description);
+        const results = await this.postArticle(image_url, title, description, email, displayName);
         res.status(201).json({
             status: 'success',
             message: 'Article created successfully',
             data: { 
-              user_id: uid,
+              email: email,
+              displayName: displayName,
               title: title,
               description: description,
               image_url: image_url,

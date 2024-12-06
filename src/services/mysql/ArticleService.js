@@ -6,12 +6,7 @@ class ArticleService{
   async getArticle(limit, offset) {
     const query = `
       SELECT 
-        id,
-        user_id,
-        image_url,
-        title,
-        description,
-        created_at
+        *
       FROM 
         articles
       ORDER BY 
@@ -28,13 +23,13 @@ class ArticleService{
     }
   }
 
-  async postArticle(uid, image_url, title, description) {
+  async postArticle(image_url, title, description, email, displayName) {
     const query = `
-      INSERT INTO articles (user_id, image_url, title, description)
-      VALUES (?, ?, ?, ?);
+      INSERT INTO articles (image_url, title, description, email, displayName)
+      VALUES (?, ?, ?, ?, ?);
     `;
     try {
-      const [results] = await this.pool.query(query, [uid, image_url, title, description]);
+      const [results] = await this.pool.query(query, [image_url, title, description, email, displayName]);
       return results;
     } catch (error) {
       console.error('Error posting article:', error);
@@ -42,7 +37,7 @@ class ArticleService{
     }
   }
 
-  async putArticle(id, image_url, title, description) {
+  async putArticle(email, image_url, title, description) {
     try {
       const query = `
         UPDATE articles 
@@ -51,9 +46,9 @@ class ArticleService{
           description = COALESCE(?, description), 
           image_url = COALESCE(?, image_url)
         WHERE 
-          id = ?;
+          email = ?;
       `;
-      const [results] = await this.pool.execute(query, [title, description, image_url, id]);
+      const [results] = await this.pool.execute(query, [title, description, image_url, email]);
       if (results.affectedRows === 0) {
         throw new Error('Article not found or no changes made');
       }
@@ -64,10 +59,10 @@ class ArticleService{
     }
   }
 
-  async deleteArticle(id){
+  async deleteArticle(email){
     try {
-      const query = `DELETE FROM articles WHERE id = ?;`
-      const result = await this.pool.query(query, [id]);
+      const query = `DELETE FROM articles WHERE email = ?;`
+      const result = await this.pool.query(query, [email]);
       if (result.affectedRows === 0) {
         throw new Error('Article not found');
       }

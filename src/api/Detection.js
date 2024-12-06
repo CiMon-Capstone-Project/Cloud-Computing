@@ -27,7 +27,7 @@ class Detection {
 
   async postDetectionHandler(req, res) {
     try {
-      const { uid, email, displayName } = req.user;
+      const { email, displayName } = req.user;
       const { disease, treatment_id, confidence } = req.body
 
       // const image_url = await this.addImage(req, "detection");
@@ -46,10 +46,14 @@ class Detection {
       const image_url = `https://storage.googleapis.com/${this.bucketName}/${filePath}`;
       
       console.log('name:', displayName);
-
-      const results = await this.postDetection(uid, image_url, confidence, disease, treatment_id);
+      // const data = await this.getTreatment(treatment_id)
+      // const symptom = data.symptom;
+      // const prevention = data.prevention;
+      // const treatment = data.treatment;
+      // console.log('treatment:', treatment)
       const [treatmentResults] = await this.getTreatment(treatment_id)
-      // const [results] = await this.pool.query(query, [treatment_id]);
+      const results = await this.postDetection(email, displayName ,image_url, confidence, disease, treatment_id, treatmentResults.symptom, treatmentResults.prevention, treatmentResults.treatment );
+      
       if (treatmentResults.length === 0) {
         return res.status(404).json({
           status: 'error',
@@ -61,7 +65,6 @@ class Detection {
         status: 'success',
         message: 'Detection uploaded successfully.',
         data: {
-          user_id: uid,
           email: email,
           displayName: displayName,
           image_url: image_url,
@@ -86,9 +89,9 @@ class Detection {
       const page = req.query.page || 1;
       const limit = req.query.limit || 10;
       const offset = (page - 1) * limit;
-      const { uid } = req.user;
+      const { email } = req.user;
 
-      const results = await this.getDetection(uid, limit, offset)
+      const results = await this.getDetection( email, limit, offset)
 
       if (results.length === 0) {
         return res.status(404).json({
@@ -101,7 +104,8 @@ class Detection {
         status: 'success',
         message: 'History fetched successfully',
         data: {
-          result: results
+          results: results
+
         }
       });
 
@@ -116,12 +120,12 @@ class Detection {
 
   async deleteAllDetectionHandler(req, res) {
     try {
-      const { uid } = req.user;
-      await this.deleteAllDetection(uid)
+      const { email } = req.user;
+      await this.deleteAllDetection(email)
 
       return res.status(200).json({ 
         status: 'success',
-        message: `History record and image deleted successfully for user: ${uid}`
+        message: `History record and image deleted successfully for user: ${email}`
       });
     } catch (error) {
       return res.status(500).json({

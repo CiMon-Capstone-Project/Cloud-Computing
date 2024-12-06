@@ -2,13 +2,14 @@ class DetectionService{
   constructor({ pool }) {
     this.pool = pool;
   }
-  async postDetection(user_id, image_url, confidence, disease, treatment_id){
+  async postDetection(email, displayName, image_url, confidence, disease, treatment_id, symptom, prevention, treatment){
     const query = `
-          INSERT INTO detection (user_id, image_url, confidence, disease, treatment_id)
-          VALUES (?, ?, ?, ?, ?);
+          INSERT INTO detection (image_url, confidence, disease, treatment_id, email, displayName, symptom, prevention, treatment)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
       `;
       try {
-        const [results] = await this.pool.query(query, [user_id, image_url, confidence, disease, treatment_id]);
+        console.log(symptom, prevention, treatment)
+        const [results] = await this.pool.query(query, [ image_url, confidence, disease, treatment_id, email, displayName, symptom, prevention, treatment]);
         // if (results.length === 0) {
         //   // Return an error object or throw an error to be handled by the caller
         //   throw new Error('Detection not found for ID: ' + treatment_id);
@@ -19,24 +20,19 @@ class DetectionService{
         throw error;
       }
   }
-  async getDetection(uid, limit, offset){
+  async getDetection(email, limit, offset){
     const query = `
         SELECT 
-          id,
-          user_id,
-          image_url,
-          disease,
-          confidence,
-          created_at
+          *
         FROM detection
-        WHERE user_id = ?
+        WHERE email = ?
         LIMIT ? OFFSET ?
       `;
       try {
-        const [results] = await this.pool.query(query, [uid, limit, offset]);
+        const [results] = await this.pool.query(query, [email, limit, offset]);
         if (results.length === 0) {
           // Return an error object or throw an error to be handled by the caller
-          throw new Error(`Treatment not found for ID: ${uid}`);
+          throw new Error(`Treatment not found for ID: ${email}`);
         }
         return results;
       } catch (error) {
@@ -44,13 +40,13 @@ class DetectionService{
         throw error;
       }
   }
-  async deleteAllDetection(uid){
+  async deleteAllDetection(email){
     try {
-      const query = `SELECT image_url FROM detection WHERE user_id = ?`
-      const [historyRecords] = await this.pool.query(query, [uid]);
+      const query = `SELECT image_url FROM detection WHERE email = ?`
+      const [historyRecords] = await this.pool.query(query, [email]);
 
       if (!historyRecords || historyRecords.length === 0) {
-        throw new Error(`Treatment not found for ID: ${uid}`)
+        throw new Error(`Treatment not found for ID: ${email}`)
       }
       const deletePromises = historyRecords.map(async (record) => {
         const imageUrl = record.image_url;

@@ -50,9 +50,9 @@ router.get('/treatment/:id', verifyToken, (req, res) => {
 
 
 // Image Upload Routes
-router.post('/upload', verifyToken, uploader.single('file'), (req, res) => {
-  storageService.uploadImage(req, res);
-});
+// router.post('/upload', verifyToken, uploader.single('file'), (req, res) => {
+//   storageService.uploadImage(req, res);
+// });
 router.delete('/delete', verifyToken, (req, res) => {
   storageService.deleteImage(req, res);
 });
