@@ -1,5 +1,5 @@
 options:
-  logs_bucket: gs://cimon-bucket  # bucket name
+  logging: CLOUD_LOGGING_ONLY  # Use this to send logs to Cloud Logging
 
 steps:
   # Build the container image
