@@ -59,13 +59,11 @@ class ArticleService{
     }
   }
 
-  async deleteArticle(email){
+  async deleteArticle(id){
     try {
-      const query = `DELETE FROM articles WHERE email = ?;`
-      const result = await this.pool.query(query, [email]);
-      if (result.affectedRows === 0) {
-        throw new Error('Article not found');
-      }
+      const query = `DELETE FROM articles WHERE id = ?;`
+      const result = await this.pool.query(query, [id]);
+      
       return result
     } catch (error) {
       console.error('Error deleting article:', error);

@@ -52,7 +52,7 @@ class DetectionService{
         const imageUrl = record.image_url;
         console.log('Image URL:', imageUrl); 
 
-        const filePath = imageUrl.replace(`https://storage.googleapis.com/${this.bucketName}/`, ``); 
+        const filePath = imageUrl.replace(`https://storage.googleapis.com/${this.bucketName}/`, ``);
         console.log('File Path:', filePath);
 
         const file = this.bucket.file(filePath);

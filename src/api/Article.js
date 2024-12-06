@@ -119,6 +119,7 @@ class Article {
 
   async deleteArticleHandler(req, res) {
     const id = req.params.id;
+    console.log(id);
     try {
       const [result] = await this.deleteArticle(id);
       if (result.affectedRows > 0) {
@@ -127,9 +128,10 @@ class Article {
           message: 'Article deleted successfully',
           data: { id },
         });
-      } else {
-        res.status(404).json({ status: 'error', error: 'Article not found' });
-      }
+      } 
+      // if (result.affectedRows === 0) {
+      //   throw new Error('Article not found');
+      // }
     } catch (error) {
       console.error('Error deleting article:', error);
       res.status(500).json({ status: 'error', message: error.message });
