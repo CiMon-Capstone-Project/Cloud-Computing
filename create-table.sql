@@ -37,7 +37,9 @@ CREATE TABLE treatments (
     id INT NOT NULL AUTO_INCREMENT,
     treatment_id INT DEFAULT NULL,
     disease VARCHAR(255) NOT NULL,
-    description TEXT DEFAULT NULL,
+    symptom TEXT DEFAULT NULL,
+    prevention TEXT DEFAULT NULL,
+    treatment TEXT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );

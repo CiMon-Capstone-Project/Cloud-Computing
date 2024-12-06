@@ -1,12 +1,13 @@
 # Stage 1: Build
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+
 # Stage 2: Package
-FROM node:14-alpine
+FROM node:16-alpine
 WORKDIR /app
 COPY --from=builder /app .
-EXPOSE 3000
+EXPOSE 8080
 CMD ["npm", "start"]
