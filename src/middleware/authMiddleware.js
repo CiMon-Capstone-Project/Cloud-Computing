@@ -22,8 +22,6 @@ export const verifyToken = async (req, res, next) => {
     const userRecord = await admin.auth().getUser(req.user.uid);
     req.user.displayName = userRecord.displayName; // Add displayName to the user object
 
-    console.log(req.user.uid); // Log user ID for debugging
-    console.log(req.user.displayName); // Log displayName for debugging
     next();
   } catch (error) {
     console.error('Token verification error:', error);
