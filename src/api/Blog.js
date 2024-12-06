@@ -11,7 +11,7 @@ class Blog {
     const offset = (page - 1) * limit;
 
     try {
-      const [results] = await this.getBlog(limit, offset);
+      const results = await this.getBlog(limit, offset);
       
       res.status(200).json({
         status:'success',

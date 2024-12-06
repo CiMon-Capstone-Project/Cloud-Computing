@@ -11,6 +11,7 @@ class Detection {
     this.getDetection = options.getDetection;
     this.deleteAllDetection = options.deleteAllDetection;
     
+    this.getTreatment = options.getTreatment;
 
     this.deleteAllDetectionHandler = this.deleteAllDetectionHandler.bind(this);
     this.getDetectionByIdHandler = this.getDetectionByIdHandler.bind(this);
@@ -26,7 +27,7 @@ class Detection {
 
   async postDetectionHandler(req, res) {
     try {
-      const { uid } = req.user;
+      const { uid, email, displayName } = req.user;
       const { disease, treatment_id, confidence } = req.body
 
       // const image_url = await this.addImage(req, "detection");
@@ -44,20 +45,31 @@ class Detection {
       });
       const image_url = `https://storage.googleapis.com/${this.bucketName}/${filePath}`;
       
-      console.log('Image URL:', image_url);
-      console.log("file path:", filePath);
-      console.log('file:', file);
+      console.log('name:', displayName);
+
       const results = await this.postDetection(uid, image_url, confidence, disease, treatment_id);
-      console.log(results)
+      const [treatmentResults] = await this.getTreatment(treatment_id)
+      // const [results] = await this.pool.query(query, [treatment_id]);
+      if (treatmentResults.length === 0) {
+        return res.status(404).json({
+          status: 'error',
+          message: 'Treatment not found for ID: ' + treatment_id,
+        });
+      }
+      console.log(treatmentResults)
       res.status(200).json({
         status: 'success',
         message: 'Detection uploaded successfully.',
         data: {
           user_id: uid,
+          email: email,
+          displayName: displayName,
           image_url: image_url,
           confidence: confidence,
-          disease: disease,
           treatment_id: treatment_id,
+          symptom: treatmentResults.symptom,
+          prevention: treatmentResults.prevention,
+          treatment: treatmentResults.treatment,
         },
       });
     } catch (error) {

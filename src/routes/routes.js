@@ -30,7 +30,7 @@ const articleService = new ArticleService({ db: db });
 
 const treatment = new Treatment({ db: db, getTreatment: treatmentService.getTreatment });
 const article = new Article({ db: db, addImage: storageService.addImage, getArticle: articleService.getArticle, postArticle: articleService.postArticle, putArticle: articleService.putArticle, deleteArticle: articleService.deleteArticle});
-const detection = new Detection({ db: db, addImage: storageService.addImage,  postDetection: detectionService.postDetection, getDetection: detectionService.getDetection, deleteAllDetection: detectionService.deleteAllDetection });
+const detection = new Detection({ db: db, getTreatment: treatmentService.getTreatment ,  addImage: storageService.addImage,  postDetection: detectionService.postDetection, getDetection: detectionService.getDetection, deleteAllDetection: detectionService.deleteAllDetection });
 const blog = new Blog({ db: db, getBlog: blogService.getBlog});
 
 router.get('/test', (req,res) => {

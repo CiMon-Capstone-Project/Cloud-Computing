@@ -1,9 +1,9 @@
-// import admin from "./serviceFirebase";
 import admin from "firebase-admin";
 
 admin.initializeApp({
   credential: admin.credential.cert("./src/middleware/service.json")
 });
+
 export const verifyToken = async (req, res, next) => {
   try {
     const authorizationHeader = req.headers.authorization;
@@ -17,7 +17,13 @@ export const verifyToken = async (req, res, next) => {
     const token = authorizationHeader.split('Bearer ')[1];
     const decodedToken = await admin.auth().verifyIdToken(token);
     req.user = decodedToken;
+
+    // Fetch user details using the UID
+    const userRecord = await admin.auth().getUser(req.user.uid);
+    req.user.displayName = userRecord.displayName; // Add displayName to the user object
+
     console.log(req.user.uid); // Log user ID for debugging
+    console.log(req.user.displayName); // Log displayName for debugging
     next();
   } catch (error) {
     console.error('Token verification error:', error);
