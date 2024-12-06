@@ -12,7 +12,7 @@ app.use(bodyParser.json()); // Parse JSON request bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Cimon API server!🚀");
+  res.send("Welcome to Cimon API server!🚀🚀");
 });
 app.use("/api",router)
 
