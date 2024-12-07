@@ -23,6 +23,7 @@ class Detection {
       projectId: 'chili-monitoring-2024'
     });
     this.bucket = this.storage.bucket('cimon-bucket');
+    this.bucketName = "cimon-bucket"
   }
 
   async postDetectionHandler(req, res) {
