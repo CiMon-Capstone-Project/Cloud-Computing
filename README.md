@@ -3,9 +3,6 @@
 =======
 **CiMon (Chili Monitoring)** is a cloud-based application designed to detect diseases in chili plants by analyzing leaf images. Utilizing Machine Learning technology, this application delivers fast and accurate detection results, assisting farmers in identifying and addressing plant diseases early to enhance crop productivity.
 
-# **Overview: **
-### [Backend Features Documentation](https://github.com/CiMon-Capstone-Project/Cloud-Computing_V2/tree/main#backend-features-documentation)
-
 # Backend Features Documentation
 ## Dependency Used :
 * @google-cloud/storage: A library to interact with Google Cloud Storage, commonly used for uploading and managing files in the cloud.
@@ -212,8 +209,6 @@ This architecture outlines the components used in the CiMon Web Service, leverag
   * **Cloud Storage**: Provides a scalable and secure location for storing and accessing media files used by the application.
   * **Firebase Authentication**: Offers real-time database capabilities and authentication services, enhancing user interaction and data management.
   * **Cloud SQL**: A fully managed relational database service that handles database queries, ensuring data integrity and availability.
-TensorFlow Lite Model: Utilizes machine learning models for on-device inference, enabling advanced features within the application.
-This architecture ensures a robust, scalable, and efficient web service, leveraging the best practices of cloud computing.
 
 ## Contact 
 If you have any questions, suggestions, or feedback, please feel free to reach out to us:
