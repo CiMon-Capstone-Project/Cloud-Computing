@@ -60,6 +60,9 @@ Upload images of chili leaves that are indicated by disease to get detection res
                 "prevention": "Perlakuan benih sebelum tanam, Perbaikan drainase, Menanam bibit yang bebas patogen pada lahan yang tidak terkontaminasi oleh patogen, baik di persemaian maupun di lapangan, Sanitasi dengan cara memusnahkan dan atau sisa-sisa tanaman yang terinfeksi/terserang",
                 "treatment": "Pengendalian kimia dapat dilakukan dengan fungisida secara bijaksana, efektif, terdaftar dan diizinkan oleh Menteri Pertanian, berpedoman pada peramalan cuaca dan populasi spora di lapangan."
             }
+        ]
+    }
+}
 ```
 ## DELETE /detection
 Upload images of chili leaves that are indicated by disease to get detection results.
