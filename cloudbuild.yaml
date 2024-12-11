@@ -24,6 +24,6 @@ steps:
       "9001"
     ]
 
-timeout: 1200s
+timeout: 600s
 options:
   logging: CLOUD_LOGGING_ONLY
