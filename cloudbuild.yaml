@@ -3,7 +3,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "build",
-      "-t", "gcr.io/${_PROJECT_ID}/cimon-image:${_VERSION}",
+      "-t", "gcr.io/${_PROJECT_ID}/cimon-image:${SHORT_SHA}",
       "."
     ]
 
@@ -11,7 +11,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "push",
-      "gcr.io/${_PROJECT_ID}/cimon-image:${_VERSION}"
+      "gcr.io/${_PROJECT_ID}/cimon-image:${SHORT_SHA}"
     ]
 
   # Deploy the service
@@ -21,7 +21,7 @@ steps:
       "deploy",
       "${_SERVICE_NAME}",
       "--image",
-      "gcr.io/${_PROJECT_ID}/cimon-image:${_VERSION}",
+      "gcr.io/${_PROJECT_ID}/cimon-image:${SHORT_SHA}",
       "--region",
       "${_DEPLOY_REGION}",
       "--platform", 
@@ -34,7 +34,4 @@ steps:
 timeout: 600s
 options:
   logging: CLOUD_LOGGING_ONLY
-
-subtitutions:
-  "_VERSION": "1.0"
 
