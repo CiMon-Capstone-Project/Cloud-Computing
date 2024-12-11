@@ -4,10 +4,9 @@
 **CiMon (Chili Monitoring)** is a cloud-based application designed to detect diseases in chili plants by analyzing leaf images. Utilizing Machine Learning technology, this application delivers fast and accurate detection results, assisting farmers in identifying and addressing plant diseases early to enhance crop productivity.
 
 # Backend Features Documentation
-## Main Features
-### Diseases Detection API 🔍
-* **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
-#### POST /detection
+## Diseases Detection API 🔍
+**Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
+## POST /detection
 Upload images of chili leaves that are indicated by disease to get detection results.
 ### `Response`
 ```json
