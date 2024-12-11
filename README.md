@@ -211,9 +211,37 @@ This architecture outlines the components used in the CiMon Web Service, leverag
   * **Cloud SQL**: A fully managed relational database service that handles database queries, ensuring data integrity and availability.
 
 ## Flow of Cloud Application in CiMon
-* **Git Repository**:<br>
-  **Functions**:Stores the source code of the application. Every time there is a code push to     the repository, it triggers the CI/CD process.<br>
-  **Process**:Cloud Build takes the latest code, builds the Docker image, and packages the application into a container for easier deployment.
+
+1. **Git Repository:**
+   - **Function**: Stores the source code of the application. Every time there is a code push to the repository, it triggers the CI/CD process.
+   - **Process**: Updated application code is automatically passed to the defined build system.
+
+2. **Cloud Build:**
+   - **Function**: Automates the building of Docker images from the source code in the Git repository.
+   - **Process**: Cloud Build takes the latest code, builds the Docker image, and packages the application into a container for easier deployment.
+
+3. **Artifacts Registry:**
+   - **Function**: Stores the built Docker images.
+   - **Process**: After Cloud Build completes building the image, the image is stored in the Artifacts Registry to ensure the correct version is used for deployment.
+4. **Cloud Run:**
+   - **Function**: A serverless platform that deploys and manages Docker images automatically.
+   - **Process**: Cloud Run deploys the image stored in the Artifacts Registry, providing automatic scaling to handle user traffic efficiently.
+
+5. **Cloud Storage:**
+   - **Function**: Provides scalable and secure storage for media files used by the application, such as images, videos, and other data.
+   - **Process**: Cloud Storage offers a secure and managed location for the application’s media, allowing the application to access and serve files to users.
+
+6. **Firebase Authentication:**
+   - **Function**: Provides real-time authentication services for users.
+   - **Process**: Users register or log in using Firebase Authentication, which then stores user sessions and provides access based on defined authorization.
+
+7. **Cloud SQL:**
+   - **Function**: A fully managed relational database service for the application.
+   - **Process**: Cloud SQL is used to store user data, disease detection history, articles, and other information needed by the application, ensuring data integrity and availability.
+
+## Flow Overview
+Overall, the application flow begins with the code in the **Git Repository**, which is then processed by **Cloud Build** to create the Docker image. The built image is stored in **Artifacts Registry**, and **Cloud Run** handles the deployment and management of the application with automatic scaling. The required application data, both media and user data, is stored in **Cloud Storage** and **Cloud SQL**. For authentication, users rely on **Firebase Authentication** to ensure secure and managed access.
+
 # Contact 
 If you have any questions, suggestions, or feedback, please feel free to reach out to us:
 * **Azhar** Ilyas Hanifa [Linkedin](https://www.linkedin.com/in/azharilyas/)
