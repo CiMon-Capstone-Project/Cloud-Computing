@@ -1,3 +1,6 @@
+options:
+  logs_bucket: gs://cimon-bucket  # Specify your logs bucket
+
 steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
