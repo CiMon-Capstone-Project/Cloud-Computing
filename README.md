@@ -3,26 +3,6 @@
 =======
 **CiMon (Chili Monitoring)** is a cloud-based application designed to detect diseases in chili plants by analyzing leaf images. Utilizing Machine Learning technology, this application delivers fast and accurate detection results, assisting farmers in identifying and addressing plant diseases early to enhance crop productivity.
 
-## **Tech Stacks**
-* Google Cloud Services
-  - UI/UX : Figma, Prototype
-  - Vector Design (Logo and Illustration) : Adobe Illustrator, Adobe Photoshop
-  - Animation & SFX : After Effect, DaVinci Ressolve
-* API Documentation
-  - Android Studio utilizing Native Kotlin language with SDK 26
-  - XML Layout file providing dynamic and responsive layouts
-  - MVVM ViewModel to manage UI-related data and handling business logic to ensure data persists during configuration changes
-  - Offline-support utilizing Room database to store API responses locally, ensuring that users can access data even without an internet connection.
-  - Firebase allows application runs in real-time using Firebase, which enables seamless integration with the internet and allows for dynamic updates.
-  - Cloud Computing: The authentication APIs provided by Cloud Computing are used for forum, detection, blog, and other related functionalities.
-  - Retrofit to retrieve API response and integrate it into the app, allowing seamless synchronization of data between the local Room database and remote servers for a consistent user experience.
-  - Glide as image loading and caching library for efficient handling of images in your application.
-  - uCrop Yalantis to crop an image based on respective resolution
-  - TFLite to implement embedded machine learning model
-  - Gemini API to implement chatbot feature utilizing Gemini AI
-  - Coroutine support allowing background process to make apk run smoothly
-  - Lottie Library to allow animation to be played on splash screen
-
 ## **Main Features**
 1. Diseases Detection 🔍: <br>
    Analyzes images of diseased chili plant leaves to provide an initial diagnosis.
@@ -46,6 +26,26 @@ Our application is based on Android OS. In order to use our application, you wil
 
 We designing our app using figma. Here are the link of the Grand design, Lo-Fi, Hi-Fi, Prototype, and more. <br>
 [CiMon Figma](https://www.figma.com/design/1WbH8Mr0UFSYiHrvQGHxNu/PROJECT-CiMon?node-id=0-1)
+
+## **Tech Stacks**
+* Google Cloud Services
+  - UI/UX : Figma, Prototype
+  - Vector Design (Logo and Illustration) : Adobe Illustrator, Adobe Photoshop
+  - Animation & SFX : After Effect, DaVinci Ressolve
+* API Documentation
+  - Android Studio utilizing Native Kotlin language with SDK 26
+  - XML Layout file providing dynamic and responsive layouts
+  - MVVM ViewModel to manage UI-related data and handling business logic to ensure data persists during configuration changes
+  - Offline-support utilizing Room database to store API responses locally, ensuring that users can access data even without an internet connection.
+  - Firebase allows application runs in real-time using Firebase, which enables seamless integration with the internet and allows for dynamic updates.
+  - Cloud Computing: The authentication APIs provided by Cloud Computing are used for forum, detection, blog, and other related functionalities.
+  - Retrofit to retrieve API response and integrate it into the app, allowing seamless synchronization of data between the local Room database and remote servers for a consistent user experience.
+  - Glide as image loading and caching library for efficient handling of images in your application.
+  - uCrop Yalantis to crop an image based on respective resolution
+  - TFLite to implement embedded machine learning model
+  - Gemini API to implement chatbot feature utilizing Gemini AI
+  - Coroutine support allowing background process to make apk run smoothly
+  - Lottie Library to allow animation to be played on splash screen
 
 ## **Flow of the Apps**
 1. User Interface: An attractive, dynamic, and user-friendly interface is created using XML layout files. The interface is designed to provide a smooth and intuitive experience for users.
