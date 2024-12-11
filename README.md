@@ -69,8 +69,8 @@ Upload images of chili leaves that are indicated by disease to get detection res
 ### `Response`
 ```json
 { 
-        status: 'success',
-        message: History record and image deleted successfully for user: mamik2@gmail.com
+        "status": "success",
+        "message": "History record and image deleted successfully for user: mamik2@gmail.com"
 }
 ```
   
