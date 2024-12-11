@@ -6,7 +6,7 @@
 # Backend Features Documentation
 ## Diseases Detection API 🔍
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
-### `POST /detection`
+#### `POST /detection`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -25,7 +25,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
     }
 }
 ```
-### `GET /detection`
+#### `GET /detection`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -64,7 +64,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
     }
 }
 ```
-### `DELETE /detection`
+#### `DELETE /detection`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -75,7 +75,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
 ```
 ## Blog API 🔍
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
-### `GET /blog`
+#### `GET /blog`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -106,7 +106,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
 ```
 ## Article API 🔍
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
-### `GET /article`
+#### `GET /article`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -146,7 +146,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
     }
 }
 ```
-### `POST /article`
+#### `POST /article`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -163,7 +163,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
     }
 }
 ```
-### `PUT /article/:id`
+#### `PUT /article/:id`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
@@ -178,7 +178,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
     }
 }
 ```
-### `DELETE /article/:id`
+#### `DELETE /article/:id`
 Upload images of chili leaves that are indicated by disease to get detection results.
 #### Response
 ```json
