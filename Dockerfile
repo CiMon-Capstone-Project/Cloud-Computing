@@ -10,4 +10,5 @@ FROM node:16-alpine
 WORKDIR /app
 COPY --from=builder /app .
 EXPOSE 9001
+ENV HOST 0.0.0.0
 CMD ["npm", "start"]
