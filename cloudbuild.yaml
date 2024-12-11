@@ -21,7 +21,7 @@ steps:
     - "-c"
     - |
       # Download the service.json secret from Secret Manager
-      gcloud secrets versions access latest --secret=[SECRET_NAME] > /workspace/service.json
+      gcloud secrets versions access latest --secret=firebase-service-account > /workspace/service.json
 
   # Deploy the service
   - name: "gcr.io/cloud-builders/gcloud"
