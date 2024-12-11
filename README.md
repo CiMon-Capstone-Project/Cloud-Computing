@@ -4,6 +4,16 @@
 **CiMon (Chili Monitoring)** is a cloud-based application designed to detect diseases in chili plants by analyzing leaf images. Utilizing Machine Learning technology, this application delivers fast and accurate detection results, assisting farmers in identifying and addressing plant diseases early to enhance crop productivity.
 
 # Backend Features Documentation
+## Dependency Used :
+* @google-cloud/storage: A library to interact with Google Cloud Storage, commonly used for uploading and managing files in the cloud.
+* body-parser: Middleware to parse incoming request bodies in a middleware before handling them, typically used for JSON and URL-encoded payloads.
+* cors: A middleware to enable Cross-Origin Resource Sharing (CORS), allowing requests from different domains.
+* dotenv: A module to load environment variables from a .env file into process.env, enhancing security and configuration.
+* express: A fast and minimal web framework for building server-side applications with Node.js.
+* firebase-admin: The Firebase Admin SDK for accessing Firebase services, such as authentication, Firestore, and Firebase Storage, on the server.
+* multer: A middleware for handling multipart/form-data, primarily used for file uploads.
+* mysql2: A library for connecting and interacting with MySQL databases, offering better performance and modern features compared to the original mysql library.
+* nodemon: A development tool that automatically restarts the server when file changes in the project are detected, improving productivity during development.
 ## Diseases Detection API 🔍
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
 #### `POST /detection`
@@ -201,6 +211,7 @@ This architecture outlines the components used in the CiMon Web Service, leverag
   * **Cloud SQL**: A fully managed relational database service that handles database queries, ensuring data integrity and availability.
 TensorFlow Lite Model: Utilizes machine learning models for on-device inference, enabling advanced features within the application.
 This architecture ensures a robust, scalable, and efficient web service, leveraging the best practices of cloud computing.
+
 ## Contact 
 If you have any questions, suggestions, or feedback, please feel free to reach out to us:
 * **Azhar** Ilyas Hanifa [Linkedin](https://www.linkedin.com/in/azharilyas/)
