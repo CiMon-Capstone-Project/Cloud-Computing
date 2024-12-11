@@ -11,7 +11,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "push",
-      "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:latest"
+      "gcr.io/${_PROJECT_ID}/cimon-image:latest"
     ]
 
   # Deploy the service
@@ -20,7 +20,7 @@ steps:
       "run",
       "deploy",
       "${_SERVICE_NAME}",
-      "--image", "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:latest",
+      "--image", "gcr.io/${_PROJECT_ID}/cimon-image:latest",
       "--region", "${_DEPLOY_REGION}",
       "--platform", "${_PLATFORM}",
       "--allow-unauthenticated",
