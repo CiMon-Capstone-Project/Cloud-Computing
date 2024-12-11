@@ -3,7 +3,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "build",
-      "-t", "gcr.io/chili-monitoring-2024/cimon-image:latest",
+      "-t", "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
       "."
     ]
 
@@ -11,7 +11,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "push",
-      "gcr.io/chili-monitoring-2024/cimon-image:latest"
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
     ]
 
   # Deploy the service
@@ -21,7 +21,7 @@ steps:
       "deploy",
       "cimon-api",
       "--image",
-      "gcr.io/chili-monitoring-2024/cimon-image:latest",
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
       "--region",
       "asia-southeast2",
       "--platform", 
@@ -31,7 +31,7 @@ steps:
       "9001"
     ]
 
-timeout: 600s
+timeout: 3600s
 options:
   logging: CLOUD_LOGGING_ONLY
 
