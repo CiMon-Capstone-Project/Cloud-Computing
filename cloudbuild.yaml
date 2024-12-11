@@ -3,7 +3,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "build",
-      "-t", "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:${COMMIT_SHA}",
+      "-t", "gcr.io/${_PROJECT_ID}/cimon-image:latest",
       "."
     ]
 
@@ -11,7 +11,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "push",
-      "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:${COMMIT_SHA}"
+      "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:latest"
     ]
 
   # Deploy the service
@@ -20,7 +20,7 @@ steps:
       "run",
       "deploy",
       "${_SERVICE_NAME}",
-      "--image", "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:${COMMIT_SHA}",
+      "--image", "gcr.io/${_PROJECT_ID}/${_REPO_NAME}/cimon-image:latest",
       "--region", "${_DEPLOY_REGION}",
       "--platform", "${_PLATFORM}",
       "--allow-unauthenticated",
