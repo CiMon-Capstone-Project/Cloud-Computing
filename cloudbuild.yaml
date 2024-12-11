@@ -14,6 +14,15 @@ steps:
       "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
     ]
 
+  # Access the secret and store it as a file
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+    - "-c"
+    - |
+      # Download the service.json secret from Secret Manager
+      gcloud secrets versions access latest --secret=[SECRET_NAME] > /workspace/service.json
+
   # Deploy the service
   - name: "gcr.io/cloud-builders/gcloud"
     args: [
@@ -28,10 +37,11 @@ steps:
       "managed",
       "--allow-unauthenticated",
       "--port", 
-      "9002"
+      "9002",
+      "--set-env-vars",
+      "GOOGLE_APPLICATION_CREDENTIALS=/workspace/service.json"
     ]
 
 timeout: 3600s
 options:
   logging: CLOUD_LOGGING_ONLY
-
