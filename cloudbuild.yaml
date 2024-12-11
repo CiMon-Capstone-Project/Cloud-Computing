@@ -3,23 +3,23 @@ steps:
     args:
       - build
       - '-t'
-      - '${_AR_HOSTNAME}/${_PROJECT_ID}/${_REPO_NAME}:latest'
+      - '$_AR_HOSTNAME/$_PROJECT_ID/$_REPO_NAME:latest'
       - .
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - '${_AR_HOSTNAME}/${_PROJECT_ID}/${_REPO_NAME}:latest'
+      - '$_AR_HOSTNAME/$_PROJECT_ID/$_REPO_NAME:latest'
   - name: gcr.io/cloud-builders/gcloud
     args:
       - run
       - deploy
-      - '${_SERVICE_NAME}'
+      - '$_SERVICE_NAME'
       - '--image'
-      - '${_AR_HOSTNAME}/${_PROJECT_ID}/${_REPO_NAME}:latest'
+      - '$_AR_HOSTNAME/$_PROJECT_ID/$_REPO_NAME:latest'
       - '--region'
-      - '${_DEPLOY_REGION}'
+      - '$_DEPLOY_REGION'
       - '--platform'
-      - '${_PLATFORM}'
+      - '$_PLATFORM'
       - '--allow-unauthenticated'
 timeout: 1200s
 options:
