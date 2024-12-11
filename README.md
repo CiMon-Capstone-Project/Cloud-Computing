@@ -8,9 +8,8 @@
 ### Diseases Detection API 🔍
 * **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
 #### POST /detection
-Mengunggah gambar daun cabai yang terindikasi penyakit untuk mendapatkan hasil deteksi.
-
-### Response
+Upload images of chili leaves that are indicated by disease to get detection results.
+`Response`
 ```json
 {
     "status": "success",
