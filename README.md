@@ -187,6 +187,9 @@ Upload images of chili leaves that are indicated by disease to get detection res
     "message": "History record and image deleted successfully for id: 32"
 }
 ```
+# Google Cloud Architecture
+![alt text](https://github.com/CiMon-Capstone-Project/Cloud-Computing_V2/blob/main/images/cimon-architecture.jpg?raw=true)
+=======
 
 ## Contact 
 If you have any questions, suggestions, or feedback, please feel free to reach out to us:
