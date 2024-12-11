@@ -14,7 +14,7 @@
 * multer: A middleware for handling multipart/form-data, primarily used for file uploads.
 * mysql2: A library for connecting and interacting with MySQL databases, offering better performance and modern features compared to the original mysql library.
 * nodemon: A development tool that automatically restarts the server when file changes in the project are detected, improving productivity during development.
-## Diseases Detection API 🔍
+## Diseases Detection API 
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
 #### `POST /detection`
 Upload images of chili leaves that are indicated by disease to get detection results.
@@ -83,7 +83,7 @@ Delete a specific detection record and its associated image for a given user.
         "message": "History record and image deleted successfully for user: mamik2@gmail.com"
 }
 ```
-## Blog API 🔍
+## Blog API 
 **Description** : Provides API endpoints for accessing blog content related to chili cultivation, including tips, tricks, and essential information for farmers.
 #### `GET /blog`
 Retrieve a list of blogs, including their titles, descriptions, and associated images, to provide helpful information about chili cultivation.
@@ -114,7 +114,7 @@ Retrieve a list of blogs, including their titles, descriptions, and associated i
     }
 }
 ```
-## Article API 🔍
+## Article API 
 **Description** : Provides an API endpoint to manage and retrieve articles related to chili plant cultivation. Users can fetch, create, update, and delete articles about chili plants, including information such as diseases, tips, and care instructions.
 #### `GET /article`
 Retrieve a list of articles with details such as title, description, author, and associated image URLs.
