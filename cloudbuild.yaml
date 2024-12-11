@@ -16,12 +16,14 @@ steps:
 
   # Access the secret and store it as a file
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: "bash"
-    args:
-    - "-c"
-    - |
-      # Download the service.json secret from Secret Manager
-      gcloud secrets versions access latest --secret=firebase-service-account > /workspace/service.json
+  entrypoint: "bash"
+  args:
+  - "-c"
+  - |
+    # Download the service.json secret from Secret Manager
+    gcloud secrets versions access latest --secret=firebase-service-account > /workspace/service.json
+    ls -l /workspace/  # List the files in the /workspace directory
+
 
   # Deploy the service
   - name: "gcr.io/cloud-builders/gcloud"
