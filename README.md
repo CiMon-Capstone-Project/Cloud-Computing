@@ -6,9 +6,9 @@
 # Backend Features Documentation
 ## Diseases Detection API 🔍
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
-#### POST /detection
+### `POST /detection`
 Upload images of chili leaves that are indicated by disease to get detection results.
-### `Response`
+#### Response
 ```json
 {
     "status": "success",
