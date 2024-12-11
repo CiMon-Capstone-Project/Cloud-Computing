@@ -210,7 +210,11 @@ This architecture outlines the components used in the CiMon Web Service, leverag
   * **Firebase Authentication**: Offers real-time database capabilities and authentication services, enhancing user interaction and data management.
   * **Cloud SQL**: A fully managed relational database service that handles database queries, ensuring data integrity and availability.
 
-## Contact 
+## Flow of Cloud Application in CiMon
+* **Git Repository**:
+  **Functions**:Stores the source code of the application. Every time there is a code push to     the repository, it triggers the CI/CD process.
+  **Process**:Cloud Build takes the latest code, builds the Docker image, and packages the application into a container for easier deployment.
+# Contact 
 If you have any questions, suggestions, or feedback, please feel free to reach out to us:
 * **Azhar** Ilyas Hanifa [Linkedin](https://www.linkedin.com/in/azharilyas/)
 * **Candika** Dwi Handaru [Linkedin](https://www.linkedin.com/in/candika-dwi-handaru/)
