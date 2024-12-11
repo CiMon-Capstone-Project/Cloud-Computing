@@ -1,15 +1,18 @@
-# Stage 1: Build
-FROM node:16-alpine AS builder
+# Single-stage Dockerfile
+FROM node:16-alpine
+
+# Set the working directory
 WORKDIR /app
+
+# Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
+
+# Copy the rest of the application files
 COPY . .
 
-# Stage 2: Package
-FROM node:16-alpine
-WORKDIR /app
-COPY --from=builder /app .
+# Expose the application port
 EXPOSE 9001
+
+# Command to run the application
 CMD ["npm", "start"]
-# node ./src/index.js
-# npm install
