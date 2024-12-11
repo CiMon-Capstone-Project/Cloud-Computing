@@ -19,7 +19,7 @@ steps:
     args: [
       "run",
       "deploy",
-      "cimon-api",
+      "cimon-web-service",
       "--image",
       "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
       "--region",
