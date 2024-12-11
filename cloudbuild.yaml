@@ -28,7 +28,7 @@ steps:
       "managed",
       "--allow-unauthenticated",
       "--port", 
-      "9001"
+      "9002"
     ]
 
 timeout: 3600s
