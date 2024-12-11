@@ -36,7 +36,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
 }
 ```
 #### `GET /detection`
-Upload images of chili leaves that are indicated by disease to get detection results.
+Retrieve a list of detection results for uploaded images of chili leaves, including information about disease, symptom, prevention, and treatment.
 #### Response
 ```json
 {
@@ -75,7 +75,7 @@ Upload images of chili leaves that are indicated by disease to get detection res
 }
 ```
 #### `DELETE /detection`
-Upload images of chili leaves that are indicated by disease to get detection results.
+Delete a specific detection record and its associated image for a given user.
 #### Response
 ```json
 { 
@@ -84,9 +84,9 @@ Upload images of chili leaves that are indicated by disease to get detection res
 }
 ```
 ## Blog API 🔍
-**Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
+**Description** : Provides API endpoints for accessing blog content related to chili cultivation, including tips, tricks, and essential information for farmers.
 #### `GET /blog`
-Upload images of chili leaves that are indicated by disease to get detection results.
+Retrieve a list of blogs, including their titles, descriptions, and associated images, to provide helpful information about chili cultivation.
 #### Response
 ```json
 {
@@ -115,9 +115,9 @@ Upload images of chili leaves that are indicated by disease to get detection res
 }
 ```
 ## Article API 🔍
-**Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
+**Description** : Provides an API endpoint to manage and retrieve articles related to chili plant cultivation. Users can fetch, create, update, and delete articles about chili plants, including information such as diseases, tips, and care instructions.
 #### `GET /article`
-Upload images of chili leaves that are indicated by disease to get detection results.
+Retrieve a list of articles with details such as title, description, author, and associated image URLs.
 #### Response
 ```json
 {
