@@ -1,8 +1,11 @@
-import admin from "firebase-admin";
+import admin from 'firebase-admin';  
+import path from 'path';  
 
-admin.initializeApp({
-  credential: admin.credential.cert("./workspace/service.json")
-});
+const serviceAccountPath = path.resolve('/workspace/service.json');  
+
+admin.initializeApp({  
+  credential: admin.credential.cert(serviceAccountPath)  
+});  
 
 export const verifyToken = async (req, res, next) => {
   try {
