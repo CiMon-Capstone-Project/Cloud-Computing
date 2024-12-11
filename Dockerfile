@@ -10,4 +10,6 @@ FROM node:16-alpine
 WORKDIR /app
 COPY --from=builder /app .
 EXPOSE 9001
-CMD ["npm", "start"]
+CMD ["node", "./src/index.js"]
+# node ./src/index.js
+# npm start
