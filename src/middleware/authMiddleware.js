@@ -1,7 +1,7 @@
 import admin from "firebase-admin";
 
 admin.initializeApp({
-  credential: admin.credential.cert("./src/middleware/service.json")
+  credential: admin.credential.cert("./workspace/service.json")
 });
 
 export const verifyToken = async (req, res, next) => {
