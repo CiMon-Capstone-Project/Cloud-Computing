@@ -23,14 +23,6 @@
   - Coroutine support allowing background process to make apk run smoothly
   - Lottie Library to allow animation to be played on splash screen
 
-## **Flow of the Apps**
-1. User Interface: An attractive, dynamic, and user-friendly interface is created using XML layout files. The interface is designed to provide a smooth and intuitive experience for users.
-2. User Authentication: The application integrates with Firebase Authentication allowing user to register with email or with google account. Users can register and log in to the application securely using their own private credentials.
-3. Article Forum Retrieval: The application sends requests to APIs that provide articles or forum from others user allowing the app to be semi-media social. These APIs are utilized to retrieve the necessary information for display purposes.
-4. Prediction Functionality: Predictions are embed on apk so user can use image classification with or without internet using TFLite model. The prediction then combined with API to retrieve more data about the prediction.
-5. Real-time Functionality: The application utilizes Firebase to run in real-time. This allows for seamless integration with the internet and provides dynamic updates as new data becomes available.
-6. Offline Functionality: Application mostly integrated with Room Database to store any API's that successfuly fetched to be used when connection lost
-
 ## **Main Features**
 1. Diseases Detection 🔍: <br>
    Analyzes images of diseased chili plant leaves to provide an initial diagnosis.
@@ -54,6 +46,14 @@ Our application is based on Android OS. In order to use our application, you wil
 
 We designing our app using figma. Here are the link of the Grand design, Lo-Fi, Hi-Fi, Prototype, and more. <br>
 [CiMon Figma](https://www.figma.com/design/1WbH8Mr0UFSYiHrvQGHxNu/PROJECT-CiMon?node-id=0-1)
+
+## **Flow of the Apps**
+1. User Interface: An attractive, dynamic, and user-friendly interface is created using XML layout files. The interface is designed to provide a smooth and intuitive experience for users.
+2. User Authentication: The application integrates with Firebase Authentication allowing user to register with email or with google account. Users can register and log in to the application securely using their own private credentials.
+3. Article Forum Retrieval: The application sends requests to APIs that provide articles or forum from others user allowing the app to be semi-media social. These APIs are utilized to retrieve the necessary information for display purposes.
+4. Prediction Functionality: Predictions are embed on apk so user can use image classification with or without internet using TFLite model. The prediction then combined with API to retrieve more data about the prediction.
+5. Real-time Functionality: The application utilizes Firebase to run in real-time. This allows for seamless integration with the internet and provides dynamic updates as new data becomes available.
+6. Offline Functionality: Application mostly integrated with Room Database to store any API's that successfuly fetched to be used when connection lost
 
 ## **Depedency used :**
 ```
