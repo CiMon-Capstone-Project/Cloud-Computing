@@ -34,9 +34,7 @@ steps:
       "managed",
       "--allow-unauthenticated",
       "--port", 
-      "9002",
-      "--set-env-vars",
-      "GOOGLE_APPLICATION_CREDENTIALS=/workspace/service.json"
+      "9002"
     ]
 
 timeout: 3600s
