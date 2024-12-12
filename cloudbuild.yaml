@@ -14,7 +14,7 @@ steps:
     id: 'build-image'
     args: [
       'build', 
-      '-t', 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA', 
+      '-t', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA', 
       '.'
     ]
 
@@ -23,7 +23,7 @@ steps:
     id: 'push-image'
     args: [
       'push', 
-      'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA'
+      'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
     ]
 
   # Deploy to Cloud Run
@@ -31,16 +31,16 @@ steps:
     id: 'deploy-cloud-run'
     args: [
       'run', 'deploy', 'cimon-web-service',
-      '--image', 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA',
-      '--region', 'asia-southeast2',
-      '--platform', 'managed',
+      '--image', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA',
+      '--region', '$_REGION',
+      '--platform', '$_PLATFORM',
       '--allow-unauthenticated',
-      '--port', '9002'
+      '--port', '$_PORT',
     ]
 
 # Specify the image to push to Container Registry
 images:
-  - 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA'
+  - 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
 
 # Build timeout
 timeout: 1200s
