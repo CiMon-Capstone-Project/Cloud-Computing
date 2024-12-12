@@ -11,5 +11,3 @@ WORKDIR /app
 COPY --from=builder /app .
 EXPOSE 9002
 CMD ["npm", "start"]
-# node ./src/index.js
-# npm install

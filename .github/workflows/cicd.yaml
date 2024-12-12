@@ -20,11 +20,17 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
+      # Prepare Firebase service account file
+      - name: Prepare Firebase Service Account
+        run: |
+          mkdir -p ./src/middleware
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}' > ./src/middleware/service.json
+
       # Set up Cloud SDK
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
 
-      # Configure Docker to use gcloud as a credential helper
+      # Configure Docker
       - name: Configure Docker
         run: |
           gcloud auth configure-docker
