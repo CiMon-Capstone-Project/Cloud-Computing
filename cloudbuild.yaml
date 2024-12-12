@@ -1,42 +1,46 @@
-# steps:
-#   # Build the image
-#   - name: "gcr.io/cloud-builders/docker"
-#     args: [
-#       "build",
-#       "-t", "cimon-image",
-#       "."
-#     ]
-#   # tag the image
-#   - name: "gcr.io/cloud-builders/docker"
-#     args: [
-#       "tag",
-#       "cimon-image",
-#       "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
-#     ]
-#   # Push the image
-#   - name: "gcr.io/cloud-builders/docker"
-#     args: [
-#       "push",
-#       "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
-#     ]
+steps:
+  # Decrypt the secret and write to file
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'decrypt-firebase-secret'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      mkdir -p ./src/middleware
+      gcloud secrets versions access latest --secret=FIREBASE_SERVICE_ACCOUNT_JSON > ./src/middleware/service.json
 
-#   # Deploy the service
-#   - name: "gcr.io/cloud-builders/gcloud"
-#     args: [
-#       "run",
-#       "deploy",
-#       "cimon-web-service",
-#       "--image",
-#       "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
-#       "--region",
-#       "asia-southeast2",
-#       "--platform", 
-#       "managed",
-#       "--allow-unauthenticated",
-#       "--port", 
-#       "9002"
-#     ]
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-image'
+    args: [
+      'build', 
+      '-t', 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA', 
+      '.'
+    ]
 
-# timeout: 3600s
-# options:
-#   logging: CLOUD_LOGGING_ONLY
+  # Push Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-image'
+    args: [
+      'push', 
+      'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA'
+    ]
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'deploy-cloud-run'
+    args: [
+      'run', 'deploy', 'cimon-web-service',
+      '--image', 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA',
+      '--region', 'asia-southeast2',
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--port', '9002'
+    ]
+
+# Specify the image to push to Container Registry
+images:
+  - 'gcr.io/chili-monitoring-2024/cimon-image:$SHORT_SHA'
+
+# Build timeout
+timeout: 1200s
