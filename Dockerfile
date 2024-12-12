@@ -9,7 +9,7 @@ COPY . .
 FROM node:16-alpine
 WORKDIR /app
 COPY --from=builder /app .
-EXPOSE 9001
+EXPOSE 9002
 CMD ["npm", "start"]
 # node ./src/index.js
 # npm install
