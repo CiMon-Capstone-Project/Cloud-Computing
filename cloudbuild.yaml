@@ -3,10 +3,16 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: [
       "build",
-      "-t", "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
+      "-t", "cimon-image",
       "."
     ]
-
+  # tag the image
+  - name: "gcr.io/cloud-builders/docker"
+    args: [
+      "tag",
+      "cimon-image",
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
+    ]
   # Push the image
   - name: "gcr.io/cloud-builders/docker"
     args: [
