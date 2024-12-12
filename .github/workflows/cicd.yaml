@@ -1,0 +1,44 @@
+steps:
+  # Build the image
+  - name: "gcr.io/cloud-builders/docker"
+    args: [
+      "build",
+      "-t", "cimon-image",
+      "."
+    ]
+  # tag the image
+  - name: "gcr.io/cloud-builders/docker"
+    args: [
+      "tag",
+      "cimon-image",
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
+    ]
+  # Push the image
+  - name: "gcr.io/cloud-builders/docker"
+    args: [
+      "push",
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}"
+    ]
+
+  # Deploy the service
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: [
+      "run",
+      "deploy",
+      "cimon-web-service",
+      "--image",
+      "gcr.io/chili-monitoring-2024/cimon-image:${SHORT_SHA}",
+      "--region",
+      "asia-southeast2",
+      "--platform", 
+      "managed",
+      "--allow-unauthenticated",
+      "--port", 
+      "9002",
+      "--set-env-vars",
+      "GOOGLE_APPLICATION_CREDENTIALS=/workspace/service.json"
+    ]
+
+timeout: 3600s
+options:
+  logging: CLOUD_LOGGING_ONLY
