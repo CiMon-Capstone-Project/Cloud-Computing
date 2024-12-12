@@ -1,3 +1,19 @@
+name: CICD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
 steps:
   # Build the image
   - name: "gcr.io/cloud-builders/docker"
