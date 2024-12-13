@@ -57,19 +57,6 @@ Retrieve a list of detection results for uploaded images of chili leaves, includ
                 "prevention": "Perlakuan benih sebelum tanam, Perbaikan drainase, Menanam bibit yang bebas patogen pada lahan yang tidak terkontaminasi oleh patogen, baik di persemaian maupun di lapangan, Sanitasi dengan cara memusnahkan dan atau sisa-sisa tanaman yang terinfeksi/terserang",
                 "treatment": "Pengendalian kimia dapat dilakukan dengan fungisida secara bijaksana, efektif, terdaftar dan diizinkan oleh Menteri Pertanian, berpedoman pada peramalan cuaca dan populasi spora di lapangan."
             },
-            {
-                "id": 38,
-                "image_url": "https://storage.googleapis.com/undefined/detection/1733573347690.jpg",
-                "confidence": 0.98,
-                "disease": "Healthy",
-                "treatment_id": 0,
-                "created_at": "2024-12-07T12:09:07.000Z",
-                "email": "mamik2@gmail.com",
-                "displayName": "mamik2",
-                "symptom": "Gejala serangan penyakit ini mulai terlihat dari munculnya bercak bulat berwarna coklat pada daun dan kering, ukuran bercak bisa mencapai sekitar 1 inci. Pusat bercak berwarna pucat sampai putih dengan warna tepi lebih tua. Bercak yang tua dapat menyebabkan lubang-lubang.",
-                "prevention": "Perlakuan benih sebelum tanam, Perbaikan drainase, Menanam bibit yang bebas patogen pada lahan yang tidak terkontaminasi oleh patogen, baik di persemaian maupun di lapangan, Sanitasi dengan cara memusnahkan dan atau sisa-sisa tanaman yang terinfeksi/terserang",
-                "treatment": "Pengendalian kimia dapat dilakukan dengan fungisida secara bijaksana, efektif, terdaftar dan diizinkan oleh Menteri Pertanian, berpedoman pada peramalan cuaca dan populasi spora di lapangan."
-            }
         ]
     }
 }
@@ -102,14 +89,6 @@ Retrieve a list of blogs, including their titles, descriptions, and associated i
                 "source": "https://www.kompas.com/skola/read/2023/04/27/220000869/cabai--pengertian-bagian-bagian-dan-jenisnya",
                 "created_at": "2024-12-04T03:51:54.000Z"
             },
-            {
-                "id": 1,
-                "image_url": "https://storage.googleapis.com/cimon-bucket/blog/cabe%201.jpg",
-                "title": "Tanaman Cabai dan Manfaatnya",
-                "description": "Cabai, anggota genus Capsicum, adalah buah yang dapat dimanfaatkan sebagai sayuran atau bumbu, tergantung cara penggunaannya. Sebagai bumbu, cabai pedas sangat populer di Asia Tenggara karena mampu memperkuat cita rasa makanan. Di Indonesia, cabai juga menjadi salah satu komoditas penting yang banyak dibudidayakan petani karena memiliki nilai jual tinggi. Namun, harga cabai sering kali fluktuatif, seperti yang dilaporkan Badan Pusat Statistik (BPS), di mana kenaikan harga cabai merah akibat tingginya curah hujan menjadi salah satu penyebab inflasi. Hal ini menunjukkan peran cabai yang signifikan tidak hanya dalam aspek kuliner tetapi juga dalam perekonomian.\n\nSelain menjadi bahan pangan utama, cabai memiliki banyak manfaat kesehatan berkat kandungan capsaicin dan vitamin yang kaya di dalamnya. Kandungan tersebut membantu menjaga kesehatan jantung, melancarkan sirkulasi darah, dan berperan sebagai antikanker. Capsaicin diketahui dapat memperlambat pertumbuhan sel kanker tanpa merusak sel sehat, serta membantu mengatasi masalah seperti sakit maag ringan dengan membunuh bakteri Helicobacter pylori. Lebih lanjut, cabai juga dapat meredakan flu, melancarkan pernapasan, meningkatkan kualitas tidur, serta mengurangi rasa sakit dengan menurunkan sensitivitas reseptor nyeri. Bahkan, konsumsi cabai mampu menjaga mood dengan meningkatkan level hormon serotonin dan endorfin yang membantu mengurangi stres dan depresi.\n\nDengan manfaatnya yang luas, cabai layak menjadi tanaman wajib di pekarangan rumah. Penanamannya cukup mudah dan dapat memenuhi kebutuhan harian tanpa harus bergantung pada pasar. Selain sebagai solusi praktis untuk menghemat biaya, menanam cabai juga mendukung ketersediaan pangan sehat yang kaya manfaat, mulai dari meningkatkan kesehatan hingga memperkuat perekonomian keluarga. Dengan demikian, cabai tidak hanya memberikan cita rasa pada makanan tetapi juga mendukung kualitas hidup secara keseluruhan.",
-                "source": "https://dlh.bulelengkab.go.id/informasi/detail/artikel/16_tanaman-cabai-dan-manfaatnya",
-                "created_at": "2024-12-04T03:47:28.000Z"
-            }
         ]
     }
 }
@@ -134,24 +113,6 @@ Retrieve a list of articles with details such as title, description, author, and
                 "email": "ahmadsyauqi150@gmail.com",
                 "displayName": "Ahmad Syauqi"
             },
-            {
-                "id": 30,
-                "image_url": "https://storage.googleapis.com/cimon-bucket/detection/1733734184218.jpg",
-                "title": "penyakit cabe nih",
-                "description": "contoh powdery mildew",
-                "created_at": "2024-12-09T06:38:24.000Z",
-                "email": "rifaindrasetiawan@mail.ugm.ac.id",
-                "displayName": "Rifa Indra Setiawan"
-            },
-            {
-                "id": 29,
-                "image_url": "https://storage.googleapis.com/cimon-bucket/detection/1733520191860.jpg",
-                "title": "Cabe lucu banget",
-                "description": "buat maskot boleh lah ya",
-                "created_at": "2024-12-06T21:23:12.000Z",
-                "email": "rifaset@gmail.com",
-                "displayName": "rifaset"
-            }
         ]
     }
 }
@@ -182,9 +143,9 @@ Upload images of chili leaves that are indicated by disease to get detection res
     "message": "Article updated successfully",
     "data": {
         "id": "32",
-        "title": "mek",
+        "title": "Cabai di Indonesia",
         "image_url": "https://storage.googleapis.com/cimon-bucket/detection/1733896123457.png",
-        "description": "mik"
+        "description": "Cabai adalah bahan paling penting dalam masakan Indonesia"
     }
 }
 ```
