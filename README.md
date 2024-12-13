@@ -14,6 +14,35 @@
 * multer: A middleware for handling multipart/form-data, primarily used for file uploads.
 * mysql2: A library for connecting and interacting with MySQL databases, offering better performance and modern features compared to the original mysql library.
 * nodemon: A development tool that automatically restarts the server when file changes in the project are detected, improving productivity during development.
+## User Authentication API
+**Description**: Provides Firebase-based authentication endpoints for user registration and login. Supports multiple authentication methods including email/password and Google account sign-in. Enables secure user management and authentication for the Chili Monitoring application.
+#### `POST /register`
+Register a new user using Firebase Authentication. Supports email/password registration and Google account sign-up.
+#### Response
+```json
+{
+    "kind": "identitytoolkit#SignupNewUserResponse",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImJkMGFlMTRkMjhkMTY1NzhiMzFjOGJlNmM4ZmRlZDM0ZDVlMWExYzEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiY2FuZGlrYTk5IiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2NoaWxpLW1vbml0b3JpbmctMjAyNCIsImF1ZCI6ImNoaWxpLW1vbml0b3JpbmctMjAyNCIsImF1dGhfdGltZSI6MTczNDA1NzIwNCwidXNlcl9pZCI6IjVwQXZNWGNDdllob1ByY3pMcnFCbW1FTkFaTDIiLCJzdWIiOiI1cEF2TVhjQ3ZZaG9QcmN6THJxQm1tRU5BWkwyIiwiaWF0IjoxNzM0MDU3MjA0LCJleHAiOjE3MzQwNjA4MDQsImVtYWlsIjoiY2FuZGlrYTk5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJjYW5kaWthOTlAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.G8YMMVz_N48rd2p8EzDPgr8c81lCaBzxCUp7hzSiITTKrxlQcypEIOI2oJZw_mWw8USKRGKZbjEIIoNOxu_btkucn3UjZPorkrY9It6GqNnwIOSNLkLiNIKqAfoMzI0crrppYJkA7FDxA0LLTmllX9_nH46wdJcpCppLkW9Y5tJUSWTVWCzbixfp9GhqvtIR8iZDRX4Zl6SZsTPyPFGHvc7TheZf9MXzHEd1HTuRb5e2GD12IXLAdl-XO_amt89SGSttJP8hH6cHFBt2HM_d-N1QQ34W3k4g9nIokhwiNrd3BzRdkAbf3_ODLK04_y5_XdQTyVlKqDdjlysZ05Cm7g",
+    "displayName": "candika99",
+    "email": "candika99@gmail.com",
+    "refreshToken": "AMf-vBwDdRhDk6qR5OJbNQcomHMw3QPta9C_757aBxlaEP6SoW3m-6WjZSwHJuqUMtMFYJUDyzvo_WzdGWTGCm7Kvdfr5URvbXwBOLJez_yO_Uqf1wU9U8cvq0BmDSir3d9BHMF3vUCibNM4pl7aR217HqtRy9Xh7jssK_dMYLTk-AJg_B9clpxXXuGG-2zG4qdmvVocGuR7lpqyojAqCCn4LTT6vcC6lDZKb38hSqwIXFKZvboSl2g",
+    "expiresIn": "3600",
+    "localId": "5pAvMXcCvYhoPrczLrqBmmENAZL2"
+}
+```
+#### `POST /login`
+Authenticate a user using Firebase Authentication. Supports email/password login and Google account sign-in.
+#### Response
+```json
+{
+    "kind": "identitytoolkit#VerifyPasswordResponse",
+    "localId": "5pAvMXcCvYhoPrczLrqBmmENAZL2",
+    "email": "candika99@gmail.com",
+    "displayName": "candika99",
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ii1XWnBLUSJ9.eyJpc3MiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGUuY29tLyIsImF1ZCI6ImNoaWxpLW1vbml0b3JpbmctMjAyNCIsImlhdCI6MTczNDA1NzI2NywiZXhwIjoxNzM1MjY2ODY3LCJ1c2VyX2lkIjoiNXBBdk1YY0N2WWhvUHJjekxycUJtbUVOQVpMMiIsImVtYWlsIjoiY2FuZGlrYTk5QGdtYWlsLmNvbSIsInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCIsInZlcmlmaWVkIjpmYWxzZSwiZGlzcGxheV9uYW1lIjoiY2FuZGlrYTk5In0.rRp8FX0T5teZHcgkSca4Sr47Js09QTEGLjgyYQUZcYPW3lCvqiEcCB2a4nCmKx9DtAIxAS46JV5qQlWcQq2KzPvdyo_VyVu7gxYMyQ-ucjqRHprGM3oGH6Q_By057jzlPJgLlsSBujDXPPyJzrizaDu6TpyvFyoGWwzxcu_l1d8itibZh1nVgUxF15s3v3MjTaDO5b8EYkl7p0sTGe5vLu12bojFaP1BdsWOQivuhQlUk-FlEAamFfGZZhk3arPZNrMLQCpzdAdps_X8ctipxup7vWXuj782R5JDPwhmE-i4pQjLa3abbGciTYF5chWpfcssVDh_R597PrnYNUFnzg",
+    "registered": true
+}
+```
 ## Diseases Detection API 
 **Description** : Provides an API endpoint for analyzing images of diseased chili plant leaves. Utilizes machine learning models to predict potential diseases based on the uploaded image.
 #### `POST /detection`
