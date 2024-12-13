@@ -37,7 +37,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     id: 'deploy-cloud-run'
     args: [
-      'run', 'deploy', 'cimon-web-service',
+      'run', 'deploy', 'cimon-api',
       '--image', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA',
       '--region', '$_REGION',
       '--platform', '$_PLATFORM',

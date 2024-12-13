@@ -9,5 +9,5 @@ COPY . .
 FROM node:16-alpine
 WORKDIR /app
 COPY --from=builder /app .
-EXPOSE 9002
+EXPOSE 9001
 CMD ["npm", "start"]
