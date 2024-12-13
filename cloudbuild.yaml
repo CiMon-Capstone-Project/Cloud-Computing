@@ -9,6 +9,13 @@ steps:
       mkdir -p ./src/middleware
       gcloud secrets versions access latest --secret=FIREBASE_SERVICE_ACCOUNT_JSON > ./src/middleware/service.json
 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'prepare-storage-secret'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      gcloud secrets versions access latest --secret=STORAGE_SERVICE_ACCOUNT_JSON > ./src/storageService.json
   # Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     id: 'build-image'
